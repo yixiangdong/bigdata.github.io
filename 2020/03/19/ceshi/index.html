@@ -6,26 +6,26 @@
     
 
     
-    <title>阿里云Dataworks+maxcompute实时计算数据仓库方案设计 | 大数据商务智能(BI)专栏</title>
+    <title>阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一) | 大数据商务智能(BI)专栏</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="数据仓库" />
     
-    <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
+    <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云Dataworks+maxcompute实时计算数据仓库方案设计">
+<meta property="og:title" content="阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)">
 <meta property="og:url" content="https://yixiangdong.github.io/2020/03/19/ceshi/index.html">
 <meta property="og:site_name" content="大数据商务智能(BI)专栏">
-<meta property="og:description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
+<meta property="og:description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png">
 <meta property="article:published_time" content="2020-03-19T03:12:23.000Z">
-<meta property="article:modified_time" content="2020-03-19T18:09:11.651Z">
+<meta property="article:modified_time" content="2020-03-19T19:29:10.559Z">
 <meta property="article:author" content="易向东">
-<meta property="article:tag" content="商务智能 数据仓库 实时计算">
+<meta property="article:tag" content="数据仓库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png">
+<meta name="twitter:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png">
     
 
     
@@ -166,7 +166,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        阿里云Dataworks+maxcompute实时计算数据仓库方案设计
+        阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)
         </h1>
     
 
@@ -186,6 +186,11 @@
                 
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag">数据仓库</a>
+    </div>
+
                 
 
                 
@@ -194,7 +199,8 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="数据仓库概念"></a>数据仓库概念</h2><h3 id="数据仓库定义-Data-Warehouse"><a href="#数据仓库定义-Data-Warehouse" class="headerlink" title="数据仓库定义(Data Warehouse)"></a>数据仓库定义(Data Warehouse)</h3><p>是为企业所有决策制定过程，提供所有系统数据支持的战略集合。<br>数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。<br>数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。<br>数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等</p>
+            <p><img src="/2020/03/19/ceshi/1584646112295.png" alt="业务数仓系统"></p>
+<h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="数据仓库概念"></a>数据仓库概念</h2><h3 id="数据仓库定义-Data-Warehouse"><a href="#数据仓库定义-Data-Warehouse" class="headerlink" title="数据仓库定义(Data Warehouse)"></a>数据仓库定义(Data Warehouse)</h3><p>是为企业所有决策制定过程，提供所有系统数据支持的战略集合。<br>数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。<br>数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。<br>数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等</p>
 <h2 id="项目需求分析"><a href="#项目需求分析" class="headerlink" title="项目需求分析"></a>项目需求分析</h2><ol>
 <li>采集埋点日志数据 </li>
 <li>采集业务数据库中数据 </li>
@@ -997,6 +1003,90 @@
 <p>3） 在 DDL 模式中添加建表语句 </p>
 <p><img src="/2020/03/19/ceshi/1584641312899.png" alt="DDL 模式中添加建表语句 "></p>
 <p>详细建表语句如下 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`dwd_start_log`</span> (</span><br><span class="line"><span class="string">`mid`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`user_id`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`version_code`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`version_name`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`lang`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`source`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`os`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`area`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`model`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`brand`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`sdk_version`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`email`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`height_width`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`network`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`lng`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`lat`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`entry`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`open_ad_type`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`action`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`loading_time`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`detail`</span> <span class="keyword">string</span>,</span><br><span class="line"><span class="string">`event_time`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'事件时间'</span></span><br><span class="line">)</span><br><span class="line">PARTITIONED <span class="keyword">BY</span> (ds <span class="keyword">string</span>, hh <span class="keyword">string</span>, mm <span class="keyword">string</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4）补充一些相关字段。 </p>
+<p><img src="/2020/03/19/ceshi/1584641570680.png" alt="添加补充字段"></p>
+<p>5）补充分区格式 </p>
+<p><img src="/2020/03/19/ceshi/1584641611008.png" alt="补充分区格式"></p>
+<p>6）提交到生产环境 </p>
+<p><img src="/2020/03/19/ceshi/1584642445160.png" alt="提交到生产环境 "></p>
+<h4 id="手动将-ODS-层数据导入-DWD-层"><a href="#手动将-ODS-层数据导入-DWD-层" class="headerlink" title="手动将 ODS 层数据导入 DWD 层"></a>手动将 ODS 层数据导入 DWD 层</h4><p>1）在临时查询页面， 把 ods 层 ods_base_log 里面的数据导入到 dwd_start_log </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> dwd_start_log <span class="keyword">PARTITION</span> (ds,hh,mm)</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.mid'</span>) <span class="keyword">mid</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.uid'</span>) user_id,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.vc'</span>) version_code,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.vn'</span>) version_name,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.l'</span>) lang,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.sr'</span>) <span class="keyword">source</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.os'</span>) os,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ar'</span>) area,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.md'</span>) <span class="keyword">model</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ba'</span>) brand,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.sv'</span>) sdk_version,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.hw'</span>) height_width,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.g'</span>) email,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.hw'</span>) sv,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ln'</span>) <span class="keyword">ln</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.la'</span>) la,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.entry'</span>) entry,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.loading_time'</span>)</span><br><span class="line">loading_time,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.action'</span>) <span class="keyword">action</span>,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.open_ad_type'</span>)</span><br><span class="line">open_ad_type,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.detail'</span>) detail ,</span><br><span class="line">event_view.event_time,</span><br><span class="line">ds,</span><br><span class="line">hh,</span><br><span class="line">mm</span><br><span class="line"><span class="keyword">from</span> ods_base_log</span><br><span class="line"><span class="keyword">LATERAL</span> <span class="keyword">VIEW</span> FlatEventUDTF(GET_JSON_OBJECT(log_string,<span class="string">'$.et'</span> ))</span><br><span class="line">event_view <span class="keyword">as</span> event_time,event_name,event_json</span><br><span class="line"><span class="keyword">where</span> ds=<span class="string">'20191008'</span> <span class="keyword">and</span> event_view.event_name = <span class="string">'start'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意: get_json_object函数的作用：用来解析json字符串的一个字段</p>
+<p>2）在临时查询中查看导入结果 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> dwd_start_log <span class="keyword">WHERE</span> ds=<span class="string">'20191008'</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据导入脚本"><a href="#数据导入脚本" class="headerlink" title="数据导入脚本"></a>数据导入脚本</h3><p>1）在流程中加入一个ODPS数据开发SQL脚本 </p>
+<p><img src="/2020/03/19/ceshi/1584643098845.png" alt="加入数据开发脚本"></p>
+<p><img src="/2020/03/19/ceshi/1584643149148.png" alt="增加节点"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> dwd_start_log <span class="keyword">PARTITION</span> (ds,hh,mm)</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.mid'</span>) <span class="keyword">mid</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.uid'</span>) user_id,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.vc'</span>) version_code,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.vn'</span>) version_name,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.l'</span>) lang,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.sr'</span>) <span class="keyword">source</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.os'</span>) os,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ar'</span>) area,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.md'</span>) <span class="keyword">model</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ba'</span>) brand,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.sv'</span>) sdk_version,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.hw'</span>) height_width,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.g'</span>) email,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.hw'</span>) sv,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.ln'</span>) <span class="keyword">ln</span>,</span><br><span class="line">GET_JSON_OBJECT(log_string,<span class="string">'$.cm.la'</span>) la,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.entry'</span>) entry,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.loading_time'</span>)</span><br><span class="line">loading_time,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.action'</span>) <span class="keyword">action</span>,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.open_ad_type'</span>)</span><br><span class="line">open_ad_type,</span><br><span class="line">GET_JSON_OBJECT( event_view.event_json,<span class="string">'$.detail'</span>) detail,</span><br><span class="line">event_view.event_time,</span><br><span class="line">ds,</span><br><span class="line">hh,</span><br><span class="line">mm</span><br><span class="line"><span class="keyword">from</span> ods_base_log</span><br><span class="line"><span class="keyword">LATERAL</span> <span class="keyword">VIEW</span> FlatEventUdtf (GET_JSON_OBJECT(log_string,<span class="string">'$.et'</span> ))</span><br><span class="line">event_view <span class="keyword">as</span> event_time,event_name,event_json</span><br><span class="line"><span class="keyword">where</span> ds=<span class="string">'$&#123;bizdate&#125;'</span> <span class="keyword">and</span> event_view.event_name = <span class="string">'start'</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>注意： 在上面的 SQL 中我们使用了一个${bizedate}作为外部传入的日期参数 。</p>
+<p>2）配置参数<br>在执行或者调度该脚本的时候传入相应的参数。 </p>
+<p><img src="/2020/03/19/ceshi/1584643401626.png" alt="配置参数"></p>
+<p>（ 1）在右侧有一个调度配置，打开可以对参数进行设置。 </p>
+<p><img src="/2020/03/19/ceshi/1584643504020.png" alt="添加日期参数"></p>
+<p>注意：<br>这里参数设置用的是花括号， bizdate=${yyyymmdd}， 表示取前一日的日期；<br>如果采用方括号，如， bizdate= $[yyyymmdd]， 表示取当前日期。 </p>
+<p>（ 2）配置脚本执行时间 </p>
+<p><img src="/2020/03/19/ceshi/1584643614288.png" alt="配置脚本执行时间"></p>
+<h3 id="服务数据层（DWS-层）"><a href="#服务数据层（DWS-层）" class="headerlink" title="服务数据层（DWS 层）"></a>服务数据层（DWS 层）</h3><p>需求：日活统计 </p>
+<h4 id="建表语句-1"><a href="#建表语句-1" class="headerlink" title="建表语句"></a>建表语句</h4><p>1） 创建表 dws_uv_detail_d </p>
+<p><img src="/2020/03/19/ceshi/1584643770273.png" alt="表dws_uv_detail_d"></p>
+<p>2）点击 DDL 模式 </p>
+<p><img src="/2020/03/19/ceshi/1584643818760.png" alt="DDL 模式"></p>
+<p>3） 在 DDL 模式中添加建表语句 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`dws_uv_detail_d`</span> (</span><br><span class="line"><span class="string">`mid`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'设备唯一标识'</span>,</span><br><span class="line"><span class="string">`user_id`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'用户标识'</span>,</span><br><span class="line"><span class="string">`version_code`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'程序版本号'</span>,</span><br><span class="line"><span class="string">`version_name`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'程序版本名'</span>,</span><br><span class="line"><span class="string">`lang`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'系统语言'</span>,</span><br><span class="line"><span class="string">`source`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'渠道号'</span>,</span><br><span class="line"><span class="string">`os`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'系统版本'</span>,</span><br><span class="line"><span class="string">`area`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'区域'</span>,</span><br><span class="line"><span class="string">`model`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'手机型号'</span>,</span><br><span class="line"><span class="string">`brand`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'手机品牌'</span>,</span><br><span class="line"><span class="string">`sdk_version`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'sdkversion'</span>,</span><br><span class="line"><span class="string">`email`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'email'</span>,</span><br><span class="line"><span class="string">`height_width`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'屏幕宽高'</span>,</span><br><span class="line"><span class="string">`network`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'网络模式'</span>,</span><br><span class="line"><span class="string">`lng`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'经度'</span>,</span><br><span class="line"><span class="string">`lat`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'纬度'</span>,</span><br><span class="line"><span class="string">`event_time`</span> <span class="built_in">bigint</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">COMMENT</span> <span class="string">'活跃用户按天明细'</span></span><br><span class="line">PARTITIONED <span class="keyword">BY</span> (ds <span class="keyword">string</span>,hh <span class="keyword">string</span>,mm <span class="keyword">string</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4）补全建表信息描述 </p>
+<p><img src="/2020/03/19/ceshi/1584643921603.png" alt="补全建表信息描述"></p>
+<p><img src="/2020/03/19/ceshi/1584643948842.png" alt="添加分区信息"></p>
+<p>5）提交到生产环境 </p>
+<p><img src="/2020/03/19/ceshi/1584643984926.png" alt="提交到生产环境"></p>
+<h4 id="手动将-DWD-层数据导入-DWS-层"><a href="#手动将-DWD-层数据导入-DWS-层" class="headerlink" title="手动将 DWD 层数据导入 DWS 层"></a>手动将 DWD 层数据导入 DWS 层</h4><p>1）在临时查询页面， 把 DWD 层 dwd_start_log 里面的数据导入到 dws_uv_detail_d </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> dws_uv_detail_d <span class="keyword">partition</span>(ds,hh,mm)</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">mid</span>,</span><br><span class="line">user_id,</span><br><span class="line">version_code,</span><br><span class="line">version_name,</span><br><span class="line">lang,</span><br><span class="line"><span class="keyword">source</span>,</span><br><span class="line">os,</span><br><span class="line">area,</span><br><span class="line"><span class="keyword">model</span>,</span><br><span class="line">brand,</span><br><span class="line">sdk_version,</span><br><span class="line">email,</span><br><span class="line">height_width,</span><br><span class="line">network,</span><br><span class="line">lng,</span><br><span class="line">lat,</span><br><span class="line">event_time,</span><br><span class="line">ds,</span><br><span class="line">hh,</span><br><span class="line">mm</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">*,</span><br><span class="line">ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">mid</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> event_time</span><br><span class="line"><span class="keyword">asc</span>) rn</span><br><span class="line"><span class="keyword">from</span> dwd_start_log</span><br><span class="line"><span class="keyword">where</span> ds=<span class="string">'20191008'</span></span><br><span class="line">) st <span class="keyword">where</span> rn = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2）查看导入结果 </p>
+<p>SELECT * from dws_uv_detail_d WHERE ds=’20191008’; </p>
+<h3 id="数据导入脚本-1"><a href="#数据导入脚本-1" class="headerlink" title="数据导入脚本"></a>数据导入脚本</h3><p>DWS 层一般围绕某个主题进行聚合、拼接处理。针对统计日活的需求， DWS 主要的工作就进行以日为单位的去重操作。</p>
+<p>1）在流程中加入一个数据开发脚本 </p>
+<p><img src="/2020/03/19/ceshi/1584644314585.png" alt="dws层数据开发脚本"></p>
+<p><img src="/2020/03/19/ceshi/1584644385290.png" alt="dws层数据开发脚本"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> dws_uv_detail_d <span class="keyword">partition</span>(ds,hh,mm)</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">mid</span>,</span><br><span class="line">user_id,</span><br><span class="line">version_code,</span><br><span class="line">version_name,</span><br><span class="line">lang,</span><br><span class="line"><span class="keyword">source</span>,</span><br><span class="line">os,</span><br><span class="line">area,</span><br><span class="line"><span class="keyword">model</span>,</span><br><span class="line">brand,</span><br><span class="line">sdk_version,</span><br><span class="line">email,</span><br><span class="line">height_width,</span><br><span class="line">network,</span><br><span class="line">lng,</span><br><span class="line">lat,</span><br><span class="line">event_time,</span><br><span class="line">ds,</span><br><span class="line">hh,</span><br><span class="line">mm</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">*,</span><br><span class="line">ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">mid</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> event_time</span><br><span class="line"><span class="keyword">asc</span>) rn</span><br><span class="line"><span class="keyword">from</span> dwd_start_log</span><br><span class="line"><span class="keyword">where</span> ds = <span class="string">'$&#123;bizdate&#125;'</span></span><br><span class="line">) st <span class="keyword">where</span> rn = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2）配置参数<br>点击调度配置-&gt; bizdate=${yyyymmdd} </p>
+<h2 id="应用数据层（ADS-层）"><a href="#应用数据层（ADS-层）" class="headerlink" title="应用数据层（ADS 层）"></a>应用数据层（ADS 层）</h2><p>统计各个渠道的 uv 个数 </p>
+<h3 id="建表语句-2"><a href="#建表语句-2" class="headerlink" title="建表语句"></a>建表语句</h3><p>1） 创建表 ads_uv_source_d </p>
+<p><img src="/2020/03/19/ceshi/1584644541801.png" alt="ads层建表"></p>
+<p>2）点击 DDL 模式 </p>
+<p><img src="/2020/03/19/ceshi/1584644598884.png" alt="DDL模式"></p>
+<p>3） 在 DDL 模式中添加建表语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`ads_uv_source_d`</span> (</span><br><span class="line"><span class="string">`source`</span> <span class="keyword">string</span> <span class="keyword">COMMENT</span> <span class="string">'渠道'</span>,</span><br><span class="line"><span class="string">`ct`</span> <span class="built_in">bigint</span> <span class="keyword">COMMENT</span> <span class="string">'个数'</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">COMMENT</span> <span class="string">'日活渠道统计'</span></span><br><span class="line">PARTITIONED <span class="keyword">BY</span> (ds <span class="keyword">string</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4）补全建表信息描述 </p>
+<p><img src="/2020/03/19/ceshi/1584644721022.png" alt="ads层补全建表信息描述"></p>
+<p><img src="/2020/03/19/ceshi/1584644784126.png" alt="补充分区信息"></p>
+<p>5）提交到生产环境 </p>
+<p><img src="/2020/03/19/ceshi/1584644817997.png" alt="提交到生产环境"></p>
+<h3 id="ads层数据导入脚本"><a href="#ads层数据导入脚本" class="headerlink" title="ads层数据导入脚本"></a>ads层数据导入脚本</h3><p>1）在流程中加入一个数据开发脚本 </p>
+<p><img src="/2020/03/19/ceshi/1584644889517.png" alt="在ADS层增加odps sql脚本"></p>
+<p><img src="/2020/03/19/ceshi/1584644949976.png" alt="在ADS层增加odps sql脚本"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> OVERWRITE <span class="keyword">table</span> ads_uv_source_d <span class="keyword">PARTITION</span></span><br><span class="line">(ds=<span class="string">'$&#123;bizdate&#125;'</span>)</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">source</span>,</span><br><span class="line"><span class="keyword">COUNT</span>(*) ct</span><br><span class="line"><span class="keyword">from</span> dws_uv_detail_d</span><br><span class="line"><span class="keyword">where</span> ds=<span class="string">'$&#123;bizdate&#125;'</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">source</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2）配置参数<br>点击调度配置-&gt; bizdate=${yyyymmdd} </p>
+<h3 id="日活需求：-全流程业务调度"><a href="#日活需求：-全流程业务调度" class="headerlink" title="日活需求： 全流程业务调度"></a>日活需求： 全流程业务调度</h3><p>1）点击业务 1， 右侧就会出现之前写的脚本。默认三个脚本之间没有关系，可以根据业务需<br>求，手动连线。 </p>
+<p><img src="/2020/03/19/ceshi/1584645057782.png" alt="点击业务1，手动连线"></p>
+<p>2）点击执行 </p>
+<p><img src="/2020/03/19/ceshi/1584645130260.png" alt="点击执行"></p>
+<p>3）查询运行日志 </p>
+<p><img src="/2020/03/19/ceshi/1584645175186.png" alt="查询运行日志"></p>
+<p>4）临时查询， 检查结果 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> ads_uv_source_d <span class="keyword">WHERE</span> ds=<span class="string">'20191008'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>to be continued…</p>
 
         </div>
         <footer class="article-footer">
@@ -1004,7 +1094,7 @@
 
 
 
-    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7z2lg890001w4v5bajq62za" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7z5eret0001gsv595kld2a0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -1074,20 +1164,21 @@
             "@type": "Person",
             "name": "易向东"
         },
-        "headline": "阿里云Dataworks+maxcompute实时计算数据仓库方案设计",
-        "image": "https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png",
-        "keywords": "",
+        "headline": "阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)",
+        "image": "https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png",
+        "keywords": "数据仓库",
         "genre": "",
         "datePublished": "2020-03-19",
         "dateCreated": "2020-03-19",
         "dateModified": "2020-03-20",
         "url": "https://yixiangdong.github.io/2020/03/19/ceshi/",
-        "description": "数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
+        "description": "
+数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
 项目需求分析
 采集埋点日志数据 
 采集业务数据库中数据 
-数据仓库的搭建（用户",
-        "wordCount": 8946
+数据仓库的搭建（用",
+        "wordCount": 10100
     }
 </script>
 
@@ -1185,7 +1276,7 @@
                             <a href="/2020/03/19/ceshi/" class="thumbnail">
     
     
-        <span style="background-image:url(/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png)" alt="阿里云Dataworks+maxcompute实时计算数据仓库方案设计" class="thumbnail-image"></span>
+        <span style="background-image:url(/2020/03/19/ceshi/1584646112295.png)" alt="阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)" class="thumbnail-image"></span>
     
     
 </a>
@@ -1194,7 +1285,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/03/19/ceshi/" class="title">阿里云Dataworks+maxcompute实时计算数据仓库方案设计</a></p>
+                            <p class="item-title"><a href="/2020/03/19/ceshi/" class="title">阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)</a></p>
                             <p class="item-date"><time datetime="2020-03-19T03:12:23.000Z" itemprop="datePublished">2020-03-19</time></p>
                         </div>
                     </li>
@@ -1218,9 +1309,23 @@
 
             
                 
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag">数据仓库</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
 
             
                 
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" style="font-size: 10px;">数据仓库</a>
+        </div>
+    </div>
+
 
             
                 
