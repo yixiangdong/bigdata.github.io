@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+<script>
+(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e0740d98.js","daovoice")
+daovoice('init', {
+  app_id: "e0740d98"
+});
+daovoice('update');
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
+<link rel="stylesheet" href="/css/main.css">
 
-    
-    <title>阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一) | 大数据商务智能(BI)专栏</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="数据仓库" />
-    
-    <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用">
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yixiangdong.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)">
 <meta property="og:url" content="https://yixiangdong.github.io/2020/03/19/ceshi/index.html">
@@ -20,186 +37,259 @@
 <meta property="og:description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/architecher.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/idea.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E4%B8%BB%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E6%89%93%E5%8C%85.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/flume.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/flume%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/datahub.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/datahub_create.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/create_project.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/topic.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/topic_create.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/topic_details.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/check_datahub.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/dm_archi.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/dw.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E4%B8%9A%E5%8A%A1%E5%90%8D%E7%A7%B0.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584634741197.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584634957752.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635032717.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635099901.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635454970.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635640105.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635719607.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635847424.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584635939718.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584636608997.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584636730662.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637075694.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584636936852.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637608000.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637717559.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637827902.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637916303.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584637977047.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584638259522.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584638414320.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584638618996.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584638706167.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584638788411.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639053388.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639105289.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639317048.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639625158.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639765968.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639815129.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584639907800.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640061023.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640172393.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640681181.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640746505.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640794096.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640850276.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584640962328.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584641165935.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584641222222.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584641312899.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584641570680.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584641611008.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584642445160.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643098845.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643149148.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643401626.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643504020.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643614288.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643770273.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643818760.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643921603.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643948842.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584643984926.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644314585.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644385290.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644541801.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644598884.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644721022.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644784126.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644817997.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644889517.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584644949976.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584645057782.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584645130260.png">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584645175186.png">
 <meta property="article:published_time" content="2020-03-19T03:12:23.000Z">
-<meta property="article:modified_time" content="2020-03-19T19:29:10.559Z">
+<meta property="article:modified_time" content="2020-03-19T19:56:09.023Z">
 <meta property="article:author" content="易向东">
 <meta property="article:tag" content="数据仓库">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png">
-    
 
-    
-        <link rel="alternate" href="/" title="大数据商务智能(BI)专栏" type="application/atom+xml" />
-    
-
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+<link rel="canonical" href="https://yixiangdong.github.io/2020/03/19/ceshi/">
 
 
-    
-<link rel="stylesheet" href="/css/style.css">
-
-
-    
-<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">专注 系统 专业 </p>
-                        </h2>
-                    
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                            
-                                        
-                                    
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
 </script>
 
-<script src="/js/insight.js"></script>
+  <title>阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一) | 大数据商务智能(BI)专栏</title>
+  
 
 
-</div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</header>
-        <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
-    
-    未分类
-    </h1>
-</div>
+  </div>
 
-                        <div class="main-body-content">
-                            <article id="post-ceshi" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)
-        </h1>
-    
+  <div class="site-meta">
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-      <i class="fa fa-calendar"></i>
-      <a href="/2020/03/19/ceshi/" class="article-date">
-         <time datetime="2020-03-19T03:12:23.000Z" itemprop="datePublished">2020-03-19</time>
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大数据商务智能(BI)专栏</span>
+        <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">专注 系统 专业 </p>
+  </div>
 
-
-                
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag">数据仓库</a>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
+  </div>
+</div>
 
-                
 
-                
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <p><img src="/2020/03/19/ceshi/1584646112295.png" alt="业务数仓系统"></p>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yixiangdong.github.io/2020/03/19/ceshi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="易向东">
+      <meta itemprop="description" content="大数据商务智能(BI)方案设计">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据商务智能(BI)专栏">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 11:12:23" itemprop="dateCreated datePublished" datetime="2020-03-19T11:12:23+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-20 03:56:09" itemprop="dateModified" datetime="2020-03-20T03:56:09+08:00">2020-03-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/2020/03/19/ceshi/1584646112295.png" alt="业务数仓系统"></p>
 <h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="数据仓库概念"></a>数据仓库概念</h2><h3 id="数据仓库定义-Data-Warehouse"><a href="#数据仓库定义-Data-Warehouse" class="headerlink" title="数据仓库定义(Data Warehouse)"></a>数据仓库定义(Data Warehouse)</h3><p>是为企业所有决策制定过程，提供所有系统数据支持的战略集合。<br>数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。<br>数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。<br>数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等</p>
 <h2 id="项目需求分析"><a href="#项目需求分析" class="headerlink" title="项目需求分析"></a>项目需求分析</h2><ol>
 <li>采集埋点日志数据 </li>
@@ -1088,358 +1178,198 @@
 
 <p>to be continued…</p>
 
-        </div>
-        <footer class="article-footer">
-            
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag"># 数据仓库</a>
+          </div>
+
+        
 
 
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/20/ceshi2/" rel="next" title="阿里云Dataworks+Maxcompute实时计算数据仓库方案之业务数仓搭建(二)">
+      阿里云Dataworks+Maxcompute实时计算数据仓库方案之业务数仓搭建(二) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
 
-    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7z5eret0001gsv595kld2a0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+  </div>
+
+
+          </div>
+          
+
 <script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "易向东"
-        },
-        "headline": "阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)",
-        "image": "https://yixiangdong.github.io/2020/03/19/ceshi/1584646112295.png",
-        "keywords": "数据仓库",
-        "genre": "",
-        "datePublished": "2020-03-19",
-        "dateCreated": "2020-03-19",
-        "dateModified": "2020-03-20",
-        "url": "https://yixiangdong.github.io/2020/03/19/ceshi/",
-        "description": "
-数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
-项目需求分析
-采集埋点日志数据 
-采集业务数据库中数据 
-数据仓库的搭建（用",
-        "wordCount": 10100
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
 
-</article>
-
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
-    </div>
-
-
-    
-    </section>
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>关注我 :</p>
-        <ul class="social-links">
-            
-                
-                <li>
-                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-twitter"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-facebook"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-stack-overflow"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-weibo"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-rss"></i>
-                    </a>
-                </li>
-                
-            
-        </ul>
-    </div>
-    
-        
-    
-    <div class="widgets-container">
-        
-            
-                
-
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">最新文章</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2020/03/19/ceshi/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2020/03/19/ceshi/1584646112295.png)" alt="阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/03/19/ceshi/" class="title">阿里云Dataworks+Maxcompute实时计算数据仓库方案之用户行为数仓搭建(一)</a></p>
-                            <p class="item-date"><time datetime="2020-03-19T03:12:23.000Z" itemprop="datePublished">2020-03-19</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-            
-                
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">归档</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li></ul>
-        </div>
-    </div>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库概念"><span class="nav-number">1.</span> <span class="nav-text">数据仓库概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据仓库定义-Data-Warehouse"><span class="nav-number">1.1.</span> <span class="nav-text">数据仓库定义(Data Warehouse)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目需求分析"><span class="nav-number">2.</span> <span class="nav-text">项目需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目框架"><span class="nav-number">3.</span> <span class="nav-text">项目框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统数据流程设计"><span class="nav-number">4.</span> <span class="nav-text">系统数据流程设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术选型"><span class="nav-number">5.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据生成模块"><span class="nav-number">6.</span> <span class="nav-text">数据生成模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#埋点数据基本格式"><span class="nav-number">6.1.</span> <span class="nav-text">埋点数据基本格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据生成脚本"><span class="nav-number">7.</span> <span class="nav-text">数据生成脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Maven-工程"><span class="nav-number">7.1.</span> <span class="nav-text">创建 Maven 工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公共字段-Bean"><span class="nav-number">7.2.</span> <span class="nav-text">公共字段 Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动日志-Bean"><span class="nav-number">7.3.</span> <span class="nav-text">启动日志 Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误日志-Bean"><span class="nav-number">7.4.</span> <span class="nav-text">错误日志 Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之商品曝光"><span class="nav-number">7.5.</span> <span class="nav-text">事件日志 Bean 之商品曝光</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之商品详情页"><span class="nav-number">7.6.</span> <span class="nav-text">事件日志 Bean 之商品详情页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之商品列表页"><span class="nav-number">7.7.</span> <span class="nav-text">事件日志 Bean 之商品列表页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之购物车"><span class="nav-number">7.8.</span> <span class="nav-text">事件日志 Bean 之购物车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之广告"><span class="nav-number">7.9.</span> <span class="nav-text">事件日志 Bean 之广告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之消息通知"><span class="nav-number">7.10.</span> <span class="nav-text">事件日志 Bean 之消息通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之用户评论"><span class="nav-number">7.11.</span> <span class="nav-text">事件日志 Bean 之用户评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之用户收藏"><span class="nav-number">7.12.</span> <span class="nav-text">事件日志 Bean 之用户收藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件日志-Bean-之用户点赞"><span class="nav-number">7.13.</span> <span class="nav-text">事件日志 Bean 之用户点赞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主函数"><span class="nav-number">7.14.</span> <span class="nav-text">主函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置日志打印（Logback）"><span class="nav-number">7.15.</span> <span class="nav-text">配置日志打印（Logback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包"><span class="nav-number">7.16.</span> <span class="nav-text">打包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据采集模块"><span class="nav-number">8.</span> <span class="nav-text">数据采集模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日志生成"><span class="nav-number">8.1.</span> <span class="nav-text">日志生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flume-安装及使用"><span class="nav-number">9.</span> <span class="nav-text">Flume 安装及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flume-简介"><span class="nav-number">9.1.</span> <span class="nav-text">Flume 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flume-安装"><span class="nav-number">9.2.</span> <span class="nav-text">Flume 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集群规划"><span class="nav-number">9.2.1.</span> <span class="nav-text">集群规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flume-配置"><span class="nav-number">9.2.2.</span> <span class="nav-text">Flume 配置</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义组件名称"><span class="nav-number"></span> <span class="nav-text">定义组件名称</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动-Flume-进程"><span class="nav-number">0.0.1.</span> <span class="nav-text">启动 Flume 进程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataHub-安装及使用"><span class="nav-number">1.</span> <span class="nav-text">DataHub 安装及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DataHub-简介"><span class="nav-number">1.1.</span> <span class="nav-text">DataHub 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-DataHub-与-Topic"><span class="nav-number">1.2.</span> <span class="nav-text">创建 DataHub 与 Topic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flume-推送数据到-DataHub"><span class="nav-number">2.</span> <span class="nav-text">Flume 推送数据到 DataHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flume-DataHub-插件安装"><span class="nav-number">2.1.</span> <span class="nav-text">Flume-DataHub 插件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Flume-配置文件修改"><span class="nav-number">2.1.1.</span> <span class="nav-text">Flume 配置文件修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#source-部分"><span class="nav-number">2.2.</span> <span class="nav-text">source 部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#channel-部分"><span class="nav-number">2.3.</span> <span class="nav-text">channel 部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-AccessID-和-AccessKey"><span class="nav-number">2.4.</span> <span class="nav-text">获取 AccessID 和 AccessKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看接收数据"><span class="nav-number">2.5.</span> <span class="nav-text">查看接收数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataWorks-和-MaxCompute"><span class="nav-number">3.</span> <span class="nav-text">DataWorks 和 MaxCompute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户行为数仓搭建"><span class="nav-number">4.</span> <span class="nav-text">用户行为数仓搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数仓分层概念"><span class="nav-number">4.1.</span> <span class="nav-text">数仓分层概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数仓分层"><span class="nav-number">4.1.1.</span> <span class="nav-text">数仓分层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数仓分层优点"><span class="nav-number">4.2.</span> <span class="nav-text">数仓分层优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数仓命名规范"><span class="nav-number">4.3.</span> <span class="nav-text">数仓命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数仓分层配置"><span class="nav-number">4.4.</span> <span class="nav-text">数仓分层配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建立业务流程"><span class="nav-number">4.4.1.</span> <span class="nav-text">建立业务流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置表主题"><span class="nav-number">4.5.</span> <span class="nav-text">配置表主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置表层级"><span class="nav-number">4.5.1.</span> <span class="nav-text">配置表层级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原始数据层（ODS-层）"><span class="nav-number">4.6.</span> <span class="nav-text">原始数据层（ODS 层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建表语句"><span class="nav-number">4.6.1.</span> <span class="nav-text">建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置基本属性"><span class="nav-number">4.6.2.</span> <span class="nav-text">配置基本属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置物理模型"><span class="nav-number">4.6.3.</span> <span class="nav-text">配置物理模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置字段"><span class="nav-number">4.6.4.</span> <span class="nav-text">配置字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置分区"><span class="nav-number">4.6.5.</span> <span class="nav-text">配置分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看建表语句"><span class="nav-number">4.6.6.</span> <span class="nav-text">查看建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交到生产环境"><span class="nav-number">4.6.7.</span> <span class="nav-text">提交到生产环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表的基本操作"><span class="nav-number">4.7.</span> <span class="nav-text">表的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表结构"><span class="nav-number">4.7.1.</span> <span class="nav-text">查看表结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在业务流程中导入表"><span class="nav-number">4.8.</span> <span class="nav-text">在业务流程中导入表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#临时查询"><span class="nav-number">4.8.1.</span> <span class="nav-text">临时查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataHub-推送数据到-MaxCompute"><span class="nav-number">5.</span> <span class="nav-text">DataHub 推送数据到 MaxCompute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-DataConnector"><span class="nav-number">5.1.</span> <span class="nav-text">创建 DataConnector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发送数据"><span class="nav-number">5.1.1.</span> <span class="nav-text">发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-number">5.1.2.</span> <span class="nav-text">接收数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#明细数据层（DWD-层）"><span class="nav-number">5.2.</span> <span class="nav-text">明细数据层（DWD 层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日志格式分析"><span class="nav-number">5.2.1.</span> <span class="nav-text">日志格式分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义-UDTF（解析具体事件字段）"><span class="nav-number">5.3.</span> <span class="nav-text">自定义 UDTF（解析具体事件字段）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DWD-层建表（启动日志表）"><span class="nav-number">5.4.</span> <span class="nav-text">DWD 层建表（启动日志表）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动将-ODS-层数据导入-DWD-层"><span class="nav-number">5.4.1.</span> <span class="nav-text">手动将 ODS 层数据导入 DWD 层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入脚本"><span class="nav-number">5.5.</span> <span class="nav-text">数据导入脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务数据层（DWS-层）"><span class="nav-number">5.6.</span> <span class="nav-text">服务数据层（DWS 层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建表语句-1"><span class="nav-number">5.6.1.</span> <span class="nav-text">建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手动将-DWD-层数据导入-DWS-层"><span class="nav-number">5.6.2.</span> <span class="nav-text">手动将 DWD 层数据导入 DWS 层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入脚本-1"><span class="nav-number">5.7.</span> <span class="nav-text">数据导入脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用数据层（ADS-层）"><span class="nav-number">6.</span> <span class="nav-text">应用数据层（ADS 层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建表语句-2"><span class="nav-number">6.1.</span> <span class="nav-text">建表语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ads层数据导入脚本"><span class="nav-number">6.2.</span> <span class="nav-text">ads层数据导入脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日活需求：-全流程业务调度"><span class="nav-number">6.3.</span> <span class="nav-text">日活需求： 全流程业务调度</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
 
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">标签</h3>
-        <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag">数据仓库</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-float">
-        <h3 class="widget-title">标签云</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" style="font-size: 10px;">数据仓库</a>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-            
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">易向东</p>
+  <div class="site-description" itemprop="description">大数据商务智能(BI)方案设计</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-    </div>
-</aside>
-
-                </div>
-            </div>
-        </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2020 易向东</p>
-                
-                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
-                
-            </div>
-            <div class="footer-plugins">
-              
-    
-
-
-            </div>
-        </div>
-    </div>
-</footer>
-
-        
-    
-    <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'https://yixiangdong.github.io/2020/03/19/ceshi/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
 
 
 
-
-
-    
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
-
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-    
-    
-
-    
-
-
-
-<!-- Custom Scripts -->
-
-<script src="/js/main.js"></script>
-
+      </div>
 
     </div>
-</body>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">易向东</span>
+</div>
+ <!--
+ <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
