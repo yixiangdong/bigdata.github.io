@@ -6,7 +6,7 @@
     
 
     
-    <title>阿里云dataworks+maxcompute方案设计 | 大数据商务智能(BI)方案设计</title>
+    <title>阿里云Dataworks+maxcompute实时计算数据仓库方案设计 | 大数据商务智能(BI)专栏</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -14,22 +14,22 @@
     
     <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云dataworks+maxcompute方案设计">
+<meta property="og:title" content="阿里云Dataworks+maxcompute实时计算数据仓库方案设计">
 <meta property="og:url" content="https://yixiangdong.github.io/2020/03/19/ceshi/index.html">
-<meta property="og:site_name" content="大数据商务智能(BI)方案设计">
+<meta property="og:site_name" content="大数据商务智能(BI)专栏">
 <meta property="og:description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png">
 <meta property="article:published_time" content="2020-03-19T03:12:23.000Z">
-<meta property="article:modified_time" content="2020-03-19T07:05:14.739Z">
+<meta property="article:modified_time" content="2020-03-19T18:09:11.651Z">
 <meta property="article:author" content="易向东">
-<meta property="article:tag" content="大数据商务智能">
+<meta property="article:tag" content="商务智能 数据仓库 实时计算">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png">
     
 
     
-        <link rel="alternate" href="/" title="大数据商务智能(BI)方案设计" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="大数据商务智能(BI)专栏" type="application/atom+xml" />
     
 
     
@@ -80,7 +80,7 @@
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">更专注 更系统 更专业 </p>
+                            <p class="subtitle">专注 系统 专业 </p>
                         </h2>
                     
                 </div>
@@ -166,7 +166,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        阿里云dataworks+maxcompute方案设计
+        阿里云Dataworks+maxcompute实时计算数据仓库方案设计
         </h1>
     
 
@@ -695,6 +695,308 @@
 <p>3）然后进入到/opt/module/logs 目录，观察日志是否写入成功 </p>
 <h2 id="Flume-安装及使用"><a href="#Flume-安装及使用" class="headerlink" title="Flume 安装及使用"></a>Flume 安装及使用</h2><p>1） Flume 官网地址： <a href="http://flume.apache.org/" target="_blank" rel="noopener">http://flume.apache.org/</a><br>2）文档查看地址： <a href="http://flume.apache.org/FlumeUserGuide.html" target="_blank" rel="noopener">http://flume.apache.org/FlumeUserGuide.html</a><br>3）下载地址： <a href="http://archive.apache.org/dist/flume/" target="_blank" rel="noopener">http://archive.apache.org/dist/flume/</a> </p>
 <h3 id="Flume-简介"><a href="#Flume-简介" class="headerlink" title="Flume 简介"></a>Flume 简介</h3><p>Flume 是 Cloudera 提供的一个高可用的，高可靠的， 分布式的海量日志采集、聚合和传<br>输的系统。 Flume 基于流式架构，灵活简单。 </p>
+<p><img src="/2020/03/19/ceshi/flume.png" alt="flume"></p>
+<p>1） Source<br>主要负责采集工作，采用 TailDir 组件用于监控文件或文件夹的变化。<br>2） Channel<br>扮演数据管道的角色，对数据进行缓冲。采用非持久化的 Memory 类型。<br>3） Sink<br>把 Channel 中的数据输出到外部环境中，支持多种数据接口（ HDFS、 Kafka 等），此次<br>案例中我们的最终目标是数据到阿里云的数据总线中（ DataHub），调试阶段可以先输出到<br>控制台中。 </p>
+<h3 id="Flume-安装"><a href="#Flume-安装" class="headerlink" title="Flume 安装"></a>Flume 安装</h3><h4 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h4><p><img src="/2020/03/19/ceshi/flume%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92.png" alt="flume集群规划"></p>
+<p>1）将 apache-flume-1.7.0-bin.tar.gz 上传到 hadoop102 的/opt/software 目录下<br>2）解压 apache-flume-1.7.0-bin.tar.gz 到/opt/module/目录下<br>[atguigu@hadoop102 software]$ tar -zxf apache-flume-1.7.0-<br>bin.tar.gz -C /opt/module/<br>3） 修改 apache-flume-1.7.0-bin 的名称为 flume<br>[atguigu@hadoop102 module]$ mv apache-flume-1.7.0-bin flume<br>4）将 flume/conf 下的 flume-env.sh.template 文件修改为 flume-env.sh，并配置 flume-env.sh 文<br>件 </p>
+<p>[atguigu@hadoop102 conf]$ mv flume-env.sh.template flume-env.sh<br>[atguigu@hadoop102 conf]$ vi flume-env.sh<br>export JAVA_HOME=/opt/module/jdk1.8.0_144 </p>
+<h4 id="Flume-配置"><a href="#Flume-配置" class="headerlink" title="Flume 配置"></a>Flume 配置</h4><p>1）在/opt/module/flume/conf 中添加文件 file-flume-log.conf，该文件是一个 Flume 作业的核<br>心文件，咱们上述的 Source、 Channel、 Sink 都是通过这个配置文件来实现的。 </p>
+<p>[atguigu@hadoop102 conf]$ vim file-flume-log.conf<br>添加如下内容 </p>
+<h1 id="定义组件名称"><a href="#定义组件名称" class="headerlink" title="定义组件名称"></a>定义组件名称</h1><p>a1.sources = r1<br>a1.sinks = k1<br>a1.channels = c1<br>###source 部分<br>a1.sources.r1.type = TAILDIR<br>#记录偏移量实现断点续传<br>a1.sources.r1.positionFile =/opt/module/flume/test<br>/taildir_position.json<br>a1.sources.r1.channels = c1<br>a1.sources.r1.filegroups=f1<br>a1.sources.r1.filegroups.f1=/opt/module/logs/app.+<br>a1.sources.r1.fileHeader = true<br>###channel 部分<br>a1.channels.c1.type = memory<br>a1.channels.c1.capacity = 1000<br>a1.channels.c1.transactionCapacity = 1000<br>###sink 部分 先输出到控制台中<br>a1.sinks.k1.type = logger</p>
+<p>#把 source 和 sink 绑定到 channel 中</p>
+<p>a1.sources.r1.channels = c1<br>a1.sinks.k1.channel = c1 </p>
+<h4 id="启动-Flume-进程"><a href="#启动-Flume-进程" class="headerlink" title="启动 Flume 进程"></a>启动 Flume 进程</h4><p>[atguigu@hadoop102 flume]$ /opt/module/flume/bin/flume-ng agent -n a1 -c /opt/module/flume/conf/ -f<br>/opt/module/flume/conf/file-flume-log.conf -Dflume.root.logger=info,console </p>
+<p>说明</p>
+<table>
+<thead>
+<tr>
+<th>参数选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flume-ng agent</td>
+<td>启动 Flume 程序</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>任务名称，必须和配置文件中的前缀一致。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>Flume 基本配置文件位置</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>Flume 任务配置文件位置</td>
+</tr>
+<tr>
+<td>-Dflume.root.logger=info,console</td>
+<td>打印控制台</td>
+</tr>
+</tbody></table>
+<p>验证，启动 Flume 的同时，运行日志生成程序，观察 Flume 控制台是否滚动打印日志。 </p>
+<h2 id="DataHub-安装及使用"><a href="#DataHub-安装及使用" class="headerlink" title="DataHub 安装及使用"></a>DataHub 安装及使用</h2><h3 id="DataHub-简介"><a href="#DataHub-简介" class="headerlink" title="DataHub 简介"></a>DataHub 简介</h3><p>Flume 部分已经可以输出后，咱们开始搭建真正需要输出的目的地—DataHub，即阿里云数据总线服务。<br>通俗来说这个 DataHub 类似于传统大数据解决方案中 Kafka 的角色，提供了一个数据 队列功能。 </p>
+<p>对于离线计算， DataHub 除了供了一个缓冲的队列作用。 </p>
+<p>同时由于 DataHub 提供了各种与其他阿里云上下游产品的对接功能，所以 DataHub 又扮演了一个数据的分发枢纽工作。 </p>
+<p><img src="/2020/03/19/ceshi/datahub.png" alt="datahub"></p>
+<p>1） DataHub 输入组件包括<br>Flume：主流的开源日志采集框架<br>DTS： 类似 Canal， 日志实时监控采集框架<br>Logstash： 也是日志采集框架，通常和 Elasticsearch、 Kibana 集合使用<br>Fluentd： Fluentd 是一个实时开源的数据收集器<br>OGG： 实时监控 Oracle 中数据变化<br>Java sdk：支持 JavaAPI 方式访问<br>2） DataHub 输出组件包括<br>RDS：类似与传统 MySQL 数据库<br>AnalyticDB： 面向分析型的分布式数据库<br>MaxCompute：离线分析框架<br>Elasticsearch：数据分析，倒排索引<br>StreamCompute：实时分析框架<br>TableSotre：类似于 Redis， KV 形式存储数据 </p>
+<p>OSS：类似于 HDFS， 存储图片、视频 </p>
+<h3 id="创建-DataHub-与-Topic"><a href="#创建-DataHub-与-Topic" class="headerlink" title="创建 DataHub 与 Topic"></a>创建 DataHub 与 Topic</h3><p>阿里云 DataHub 控制台入口： <a href="https://datahub.console.aliyun.com/datahub" target="_blank" rel="noopener">https://datahub.console.aliyun.com/datahub</a><br>1） 进入到 DataHub 控制台 </p>
+<p><img src="/2020/03/19/ceshi/datahub_create.png" alt="DataHub 控制台"></p>
+<p>2） 点击创建 Project </p>
+<p><img src="/2020/03/19/ceshi/create_project.png" alt="创建 Project "></p>
+<p>3）点击查看，准备创建主题 </p>
+<p><img src="/2020/03/19/ceshi/topic.png" alt="查看topic"></p>
+<p>4）点击创建 Topic </p>
+<p><img src="/2020/03/19/ceshi/topic_create.png" alt="创建Topic"></p>
+<p>5）配置 Topic 详情 </p>
+<p><img src="/2020/03/19/ceshi/topic_details.png" alt="topic_details"></p>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th>选择参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Topic 类型</td>
+<td>Tuple 为结构化数据， Blob 是二进制数据。</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Tuple 类型的字段名</td>
+</tr>
+<tr>
+<td>Shard 数量</td>
+<td>决定了队列吞吐量，每个 Shard 支持 1MB/s 的写入能力</td>
+</tr>
+<tr>
+<td>生命周期</td>
+<td>数据在队列中的最长存活时间</td>
+</tr>
+</tbody></table>
+<h2 id="Flume-推送数据到-DataHub"><a href="#Flume-推送数据到-DataHub" class="headerlink" title="Flume 推送数据到 DataHub"></a>Flume 推送数据到 DataHub</h2><h3 id="Flume-DataHub-插件安装"><a href="#Flume-DataHub-插件安装" class="headerlink" title="Flume-DataHub 插件安装"></a>Flume-DataHub 插件安装</h3><p>Flume 默认是不支持 DataHub 的，所以要给 Flume 安装 DataHub 的 Sink 插件 </p>
+<p>插件名称: aliyun-flume-datahub-sink-2.0.2.tar.gz</p>
+<p>1）首先在 Flume 安装目录建立插件文件夹 </p>
+<p>mkdir plugins.d </p>
+<p>2 ） 利 用 SecureCRT 工 具 把 aliyun-flume-datahub-sink-2.0.2.tar.gz 拷 贝 到 该<br>/opt/module/flume/plugins.d 目录下，并原地解压缩 </p>
+<p>ls</p>
+<p>tar -zxvf aliyun-flume-datahubsink-2.0.2.tar.gz </p>
+<h4 id="Flume-配置文件修改"><a href="#Flume-配置文件修改" class="headerlink" title="Flume 配置文件修改"></a>Flume 配置文件修改</h4><p>vim /opt/module/flume/conf/fileflume-datahub.conf </p>
+<p>#定义组件名称 </p>
+<p>a1.sources = r1<br>a1.sinks = k1<br>a1.channels = c1</p>
+<h3 id="source-部分"><a href="#source-部分" class="headerlink" title="source 部分"></a>source 部分</h3><p>a1.sources.r1.type = TAILDIR<br>a1.sources.r1.positionFile =<br>/opt/module/flume/test/taildir_position.json<br>a1.sources.r1.channels = c1<br>a1.sources.r1.filegroups = f1<br>a1.sources.r1.filegroups.f1 = /opt/module/logs/app.+<br>a1.sources.r1.fileHeader = true</p>
+<h3 id="channel-部分"><a href="#channel-部分" class="headerlink" title="channel 部分"></a>channel 部分</h3><p>a1.channels.c1.type = memory<br>a1.channels.c1.capacity = 1000<br>a1.channels.c1.transactionCapacity = 1000</p>
+<p>#sink 部分</p>
+<p>a1.sinks.k1.type = com.aliyun.datahub.flume.sink.DatahubSink<br>a1.sinks.k1.datahub.accessID = LTAI4FiU71dZAL17SdLBa6Nt<br>a1.sinks.k1.datahub.accessKey = 63YzSmqMOSjDR5A2ZXEzFLM2tREY6m<br>a1.sinks.k1.datahub.endPoint = <a href="http://xxxxxinc.com" target="_blank" rel="noopener">http://xxxxxinc.com</a><br>a1.sinks.k1.datahub.project = gmall_datahub<br>a1.sinks.k1.datahub.topic = base_log<br>a1.sinks.k1.batchSize = 100<br>a1.sinks.k1.serializer = DELIMITED<br>a1.sinks.k1.serializer.delimiter = “\u007C”<br>a1.sinks.k1.serializer.fieldnames = event_time,log_string<br>a1.sinks.k1.serializer.charset = UTF-8<br>a1.sinks.k1.shard.number = 1<br>a1.sinks.k1.shard.maxTimeOut = 60</p>
+<p>#把 source 和 sink 绑定到 channel 中</p>
+<p>a1.sources.r1.channels = c1<br>a1.sinks.k1.channel = c1 </p>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th>选择参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>必须是： com.aliyun.datahub.flume.sink.DatahubSink</td>
+</tr>
+<tr>
+<td>datahub.accessID</td>
+<td>accessID 下面小节会介绍</td>
+</tr>
+<tr>
+<td>datahub.accessKey</td>
+<td>accessKey</td>
+</tr>
+<tr>
+<td>datahub.endPoint</td>
+<td>不同的地区有不同的接入点，参考 <a href="https://help.aliyun.com/document_detail/47442.html" target="_blank" rel="noopener">https://help.aliyun.com/document_detail/47442.html</a></td>
+</tr>
+<tr>
+<td>project</td>
+<td>datahub 中创建的 project 名</td>
+</tr>
+<tr>
+<td>topic</td>
+<td>datahub 中 project 下的 topic</td>
+</tr>
+<tr>
+<td>batchSize</td>
+<td>每批次都少条记录</td>
+</tr>
+<tr>
+<td>serializer</td>
+<td>序列化方式， DELIMITED 表示按分隔符切分</td>
+</tr>
+<tr>
+<td>serializer.delimiter</td>
+<td>具体分隔符是什么，这里“\u007C” 表示 | Unicode 转中文工具地址： <a href="http://www.msxindl.com/tools/unicode16.asp" target="_blank" rel="noopener">http://www.msxindl.com/tools/unicode16.asp</a></td>
+</tr>
+<tr>
+<td>serializer.fieldnames</td>
+<td>切分后对应的字段名</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>serializer.charset</th>
+<th>字符集</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shard.number</td>
+<td>分片数</td>
+</tr>
+<tr>
+<td>shard.maxTimeOut</td>
+<td>超时时间， 单位是秒</td>
+</tr>
+</tbody></table>
+<h3 id="获取-AccessID-和-AccessKey"><a href="#获取-AccessID-和-AccessKey" class="headerlink" title="获取 AccessID 和 AccessKey"></a>获取 AccessID 和 AccessKey</h3><p>DataHub 服务并不是靠 IP 来定位的，而是靠阿里云账号，每个阿里云账号只能有一个<br>DataHub，每个阿里云账号也会有唯一的 AccessID 和 AccessKey。所以通过 AccessId 和<br>AccessKey 就可以直接锁定某个阿里云账号的 DataHub。<br>1）悬浮鼠标到阿里云账号头像上-&gt;点击 accesskeys </p>
+<p>2）点击继续使用 AccessKey </p>
+<p>3）新用户需要点击创建 AccessKey </p>
+<p>4）获取到 AccessKeyID 和 AccessKeySecret 值 </p>
+<h3 id="查看接收数据"><a href="#查看接收数据" class="headerlink" title="查看接收数据"></a>查看接收数据</h3><p>1）启动 Flume 进程 </p>
+<p>/opt/module/flume/bin/flume-ng agent -n a1 -c /opt/module/flume/conf/ -f /opt/module/flume/conf/file-flume-datahub.conf -Dflume.root.logger=info,console </p>
+<p>2）启动日志生成程序 </p>
+<p>java -jar log-collector-1.0-SNAPSHOT-jar-with-dependencies.jar &gt; /dev/null 2&gt;&amp;1 &amp; </p>
+<p>3） 观察 DataHub 中数据量 </p>
+<p><img src="/2020/03/19/ceshi/check_datahub.png" alt="查看datahub"></p>
+<h2 id="DataWorks-和-MaxCompute"><a href="#DataWorks-和-MaxCompute" class="headerlink" title="DataWorks 和 MaxCompute"></a>DataWorks 和 MaxCompute</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>MaxCompute（大数据计算服务）是阿里巴巴自主研发的海量数据处理平台，主要提供数据上传和下载通道，提供 SQL 及 MapReduce 等多种计算分析服务，同时还提供完善的安全解决方案。<br>DataWorks（数据工场，原大数据开发套件） 是基于 MaxCompute 计算引擎的一站式大 数据工场，它能帮助您快速完成数据集成、开发、治理、服务、质量、安全等全套数据研发工作。 </p>
+<p><img src="/2020/03/19/ceshi/dm_archi.png" alt="DataWorks 和 MaxCompute架构"></p>
+<p>盘古： 相当于 Hadoop 中的 HDFS<br>伏羲： 相当于 Hadoop 中的 YARN<br>MaxCompute Engine： 相当于 MR、 Tez 等计算引擎<br>MaxCompute 和 DataWorks 一起向用户提供完善的 ETL 和数仓管理能力，以及 SQL、<br>MR、 Graph 等多种经典的分布式计算模型，能够更快速地解决用户海量数据计算问题，有<br>效降低企业成本，保障数据安全。 </p>
+<h2 id="用户行为数仓搭建"><a href="#用户行为数仓搭建" class="headerlink" title="用户行为数仓搭建"></a>用户行为数仓搭建</h2><h3 id="数仓分层概念"><a href="#数仓分层概念" class="headerlink" title="数仓分层概念"></a>数仓分层概念</h3><h4 id="数仓分层"><a href="#数仓分层" class="headerlink" title="数仓分层"></a>数仓分层</h4><p><img src="/2020/03/19/ceshi/dw.png" alt="数据仓库分层结构"></p>
+<p>1） ODS 层<br>原始数据层，存放原始数据，直接加载原始日志、数据，数据保持原貌不做处理。<br>2） DWD 层<br>对 ODS 层数据进行清洗（去除空值，脏数据，超过极限范围的数据）<br>3） DWS 层<br>以 DWD 为基础，进行轻度汇总。<br>4） ADS 层<br>为各种统计报表提供数据 </p>
+<h3 id="数仓分层优点"><a href="#数仓分层优点" class="headerlink" title="数仓分层优点"></a>数仓分层优点</h3><p>1）把复杂问题简单化<br>将一个复杂的任务分解成多个步骤来完成，每一层只处理单一的步骤，比较简单、并且<br>方便定位问题。<br>2）减少重复开发<br>规范数据分层，通过的中间层数据，能够减少极大的重复计算，增加一次计算结果的复<br>用性。<br>3）隔离原始数据<br>不论是数据的异常还是数据的敏感性，使真实数据与统计数据解耦开。 </p>
+<h3 id="数仓命名规范"><a href="#数仓命名规范" class="headerlink" title="数仓命名规范"></a>数仓命名规范</h3><p>ODS层命名为ods前缀<br>DWD层命名为dwd前缀 </p>
+<p>DWS层命名为dws前缀 </p>
+<p>ADS层命名为ads前缀 </p>
+<p>维度表命名为dim前缀 </p>
+<p>每日全量导入命名为df（day full） 后缀 </p>
+<p>每日增量导入命名为di（day increase） 后缀 </p>
+<h3 id="数仓分层配置"><a href="#数仓分层配置" class="headerlink" title="数仓分层配置"></a>数仓分层配置</h3><h4 id="建立业务流程"><a href="#建立业务流程" class="headerlink" title="建立业务流程"></a>建立业务流程</h4><p>1）点击数据开发-&gt;业务流程-&gt;新建业务流程-&gt;输入业务名称 </p>
+<p><img src="/2020/03/19/ceshi/%E4%B8%9A%E5%8A%A1%E5%90%8D%E7%A7%B0.png" alt="新建业务流程"></p>
+<p>2）再业务流程下面就可以看到业务 1 </p>
+<p><img src="/2020/03/19/ceshi/1584634741197.png" alt="查看业务"></p>
+<h3 id="配置表主题"><a href="#配置表主题" class="headerlink" title="配置表主题"></a>配置表主题</h3><p>1）进入配置中心<br>点击最下方的齿轮，进入配置中心 </p>
+<p><img src="/2020/03/19/ceshi/1584634957752.png" alt="配置表主题"></p>
+<p>2）配置主题管理，这里主要是划分表的主题 </p>
+<p>主题一般是表的对应的业务主题，比如：基础表、用户、商品、广告等对应的业务线。 </p>
+<p><img src="/2020/03/19/ceshi/1584635032717.png" alt="配置主题管理"></p>
+<h4 id="配置表层级"><a href="#配置表层级" class="headerlink" title="配置表层级"></a>配置表层级</h4><p><img src="/2020/03/19/ceshi/1584635099901.png" alt="配置表层级"></p>
+<p>在同一页面中， DataWorks 还提供了一个物理分类的划分维度，用户可以根据情况自行决定划分方式。<br>本案例中，对数据表按照数据来源划分为，日志、数据库和综合。 </p>
+<h3 id="原始数据层（ODS-层）"><a href="#原始数据层（ODS-层）" class="headerlink" title="原始数据层（ODS 层）"></a>原始数据层（ODS 层）</h3><p>用户行为数仓分层 </p>
+<p><img src="/2020/03/19/ceshi/1584635454970.png" alt="用户行为数仓分层 "></p>
+<h4 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h4><p>1）回到数据开发的界面，按下图开始创建数据表 </p>
+<p><img src="/2020/03/19/ceshi/1584635640105.png" alt="创建表"></p>
+<p>2）输入表名-&gt;提交 </p>
+<p><img src="/2020/03/19/ceshi/1584635719607.png" alt="提交"></p>
+<p>开始建立的表要和原始数据最基本的结构一致 。</p>
+<h4 id="配置基本属性"><a href="#配置基本属性" class="headerlink" title="配置基本属性"></a>配置基本属性</h4><p>配置新创建的表的主题。 </p>
+<p><img src="/2020/03/19/ceshi/1584635847424.png" alt="配置表主题"></p>
+<h4 id="配置物理模型"><a href="#配置物理模型" class="headerlink" title="配置物理模型"></a>配置物理模型</h4><p>注意选择层级和物理分类，由于建立的原始日志表，所以此处选择 ODS 层。分类是日志 </p>
+<p><img src="/2020/03/19/ceshi/1584635939718.png" alt="配置物理模型"></p>
+<p>从 DataHub 过来的数据必须选择分区表。如果手工文件导入的表可以选择非分区。<br>为了减少再购买存储服务器， 所以选择内部表。真实企业开发时，大部分情况都是创建外部表，需要在 OSS 服务中申请存储空间。</p>
+<h4 id="配置字段"><a href="#配置字段" class="headerlink" title="配置字段"></a>配置字段</h4><p>发送过来的日志包含两部分： 服务器时间和日志详情。 这里面设计了两个字段对应接收。 </p>
+<p><img src="/2020/03/19/ceshi/1584636608997.png" alt="配置建表字段"></p>
+<p>注意：这里的主键，是指一个标志而已，本身不提供索引和唯一性约束。 </p>
+<h4 id="配置分区"><a href="#配置分区" class="headerlink" title="配置分区"></a>配置分区</h4><p>表示数据按如下字段进行分区 </p>
+<p><img src="/2020/03/19/ceshi/1584636730662.png" alt="配置分区"></p>
+<p>由于目前 DataHub 至 MaxCompute 的接口，只支持按年月日+小时+分钟方式分区，所以这三个字段是必须有的，且字段类型必须是 String。 </p>
+<h4 id="查看建表语句"><a href="#查看建表语句" class="headerlink" title="查看建表语句"></a>查看建表语句</h4><p>点击 DDL 模式，可以查看自动生成的建表语句。 和普通的创建表语句一样。 </p>
+<p><img src="/2020/03/19/ceshi/1584637075694.png" alt="查看建表语句"></p>
+<h4 id="提交到生产环境"><a href="#提交到生产环境" class="headerlink" title="提交到生产环境"></a>提交到生产环境</h4><p>点击提交到生产环境，表就创建完成了 。</p>
+<p><img src="/2020/03/19/ceshi/1584636936852.png" alt="提交到生产环境"></p>
+<h3 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h3><h4 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h4><p>在最左侧菜单中选择【表管理】，可以在右侧查看表的结构信息。但是不可以修改。 </p>
+<p><img src="/2020/03/19/ceshi/1584637608000.png" alt="查看表结构"></p>
+<h3 id="在业务流程中导入表"><a href="#在业务流程中导入表" class="headerlink" title="在业务流程中导入表"></a>在业务流程中导入表</h3><p>在业务 1 中建 ods、 dwd、 dws、 ads， 4 个文件夹 </p>
+<p><img src="/2020/03/19/ceshi/1584637717559.png" alt="导入表"></p>
+<p>2）向 ods 文件夹中导入表 </p>
+<p><img src="/2020/03/19/ceshi/1584637827902.png" alt="导入表到ods"></p>
+<h4 id="临时查询"><a href="#临时查询" class="headerlink" title="临时查询"></a>临时查询</h4><p>1） 点击临时查询-&gt;新建-&gt;ODPS SQL </p>
+<p><img src="/2020/03/19/ceshi/1584637916303.png" alt="新建ODPS SQL"></p>
+<p>2）创建临时查询节点 </p>
+<p><img src="/2020/03/19/ceshi/1584637977047.png" alt="创建临时查询节点"></p>
+<p>3）可以执行 SQL 命令 </p>
+<p><img src="/2020/03/19/ceshi/1584638259522.png" alt="执行临时查询的SQL"></p>
+<h2 id="DataHub-推送数据到-MaxCompute"><a href="#DataHub-推送数据到-MaxCompute" class="headerlink" title="DataHub 推送数据到 MaxCompute"></a>DataHub 推送数据到 MaxCompute</h2><p>如下图，之前 Flume 中的数据利用 DataHub Sink 把数据写入到了 DataHub 中， DataHub中提供了很多的其他第三方的 DataConnector 可以连接各种例如： MaxCompute， ElasticSearch，ADB， RDS 等数据库。 </p>
+<p>所以下面就要建立 DataConnector 把数据推送到 MaxCompute 中。 </p>
+<p><img src="/2020/03/19/ceshi/1584638414320.png" alt="系统架构流程设计-DataConnector"></p>
+<h3 id="创建-DataConnector"><a href="#创建-DataConnector" class="headerlink" title="创建 DataConnector"></a>创建 DataConnector</h3><p>1）在 DataHub 中找到 Topic，在某个 Topic 下，点击右上角的 DataConnector </p>
+<p><img src="/2020/03/19/ceshi/1584638618996.png" alt="找到DataConnector "></p>
+<p>2） 点击同步到 MaxCompute 离线表 </p>
+<p><img src="/2020/03/19/ceshi/1584638706167.png" alt="同步到 MaxCompute 离线表 "></p>
+<p>3） 创建 DataConnector </p>
+<p><img src="/2020/03/19/ceshi/1584638788411.png" alt="创建DataConnector "></p>
+<p>（1） MaxCompute Project：名称要和 MaxCompute 创建的工作空间名称一致<br>（ 2） MaxCompute Table： 数据导入到 MaxCompute 中的表名<br>（ 3） AccessKey ID： LTAI4FiU71dZAL17SdLBa6Nt<br>（ 4） AccessKey Secret： 63YzSmqMOSjDR5A2ZXEzFLM2tREY6m<br>注意： AccessKey ID 和 AccessKey Secret 要和自己的阿里云账号一一对应<br>（ 5）分区选项： system、 event_time<br>通常采用 system 时间分区。<br>如果是 event_time 方式分区，就要在 topic 中包含一个 event_time 的字段。不过这<br>个字段与以往的 timestamp 不同的是，必须精确到微秒级。而且这个字段一旦用于分区，<br>则不会再写入到实体表中。<br>（ 6）分区范围： 15 分钟起 </p>
+<h4 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h4><p>建立好表后 DataConnector 就可以尝试发送数据了。<br>注意： 如果已经启动了 Flume，就不需要再次启动了。<br>1）启动 Flume 程序 </p>
+<p>/opt/module/flume/bin/flume-ng agent-n a1 -c /opt/module/flume/conf/ -f /opt/module/flume/conf/file-flume-datahub.conf -Dflume.root.logger=info,console </p>
+<p>2）在服务器 hadoop102 上执行命令 </p>
+<p>java -jar log-collector-1.0-SNAPSHOT-jar-with-dependencies.jar &gt; /dev/null 2&gt;&amp;1 &amp; </p>
+<h4 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a>接收数据</h4><p>1） 观察 DataHub 中接收到数据（速度很快） </p>
+<p><img src="/2020/03/19/ceshi/1584639053388.png" alt="查看Datahub"></p>
+<p>2）查看 MaxCompute 中接收到数据（1-5 分钟的延迟） </p>
+<p><img src="/2020/03/19/ceshi/1584639105289.png" alt="查看MaxCompute"></p>
+<h3 id="明细数据层（DWD-层）"><a href="#明细数据层（DWD-层）" class="headerlink" title="明细数据层（DWD 层）"></a>明细数据层（DWD 层）</h3><p>DWD 层主要是对 ODS 层数据进行清洗（去除空值，脏数据，超过极限范围的数据）。DWD 层处理后的表，能够成为非常明确可用的基础明细数据。<br>本次项目中需要将用户行为过来基础日志，根据表类型，一张一张的解析出来 11 张不同类型的表数据，方便后续的处理。 </p>
+<h4 id="日志格式分析"><a href="#日志格式分析" class="headerlink" title="日志格式分析"></a>日志格式分析</h4><p>1）日志格式：服务器时间 | json </p>
+<p>2）其中 json 包括：<br>cm：公共字段的 key；<br>ap： app 的名称；<br>et：具体事件 </p>
+<p><img src="/2020/03/19/ceshi/1584639317048.png" alt="日志格式"></p>
+<h3 id="自定义-UDTF（解析具体事件字段）"><a href="#自定义-UDTF（解析具体事件字段）" class="headerlink" title="自定义 UDTF（解析具体事件字段）"></a>自定义 UDTF（解析具体事件字段）</h3><p>开发 UDTF 有两个方法：</p>
+<ul>
+<li><p>方法 1：在本地 IDEA 中创建工程，开发代码，打包，把 JAR 上传到 DataStudio 成为资源 JAR 包。然后基于资源 JAR 包，声明函数。</p>
+</li>
+<li><p>方法 2：直接在 FunctionStudio 中开发，然后在线打包发布程序，声明函数。</p>
+<p>相比而言，从发布流程上来说利用 FunctionStudio 更快捷方便。但是从 IDEA 开发角度<br>来说，网页版本的 FunctionStudio，肯定不如客户端的功能强大、反应速度流畅。不过也可<br>以两者配合起来使用。<br>本次案例主要介绍通过 FunctionStudio 来编写 UDTF 函数。<br>1） 按下图所示，打开 FunctionStudio 的界面 </p>
+</li>
+</ul>
+<p><img src="/2020/03/19/ceshi/1584639625158.png" alt="FunctionStudio 的界面"></p>
+<p>2）创建工程 </p>
+<p><img src="/2020/03/19/ceshi/1584639765968.png" alt="创建工程 "></p>
+<p>3）选择命名工程名，选择 udfjava </p>
+<p><img src="/2020/03/19/ceshi/1584639815129.png" alt="命名工程名"></p>
+<p>4）添加代码文件 </p>
+<p>可以看到工程创建好后，默认有很多参考的模板。 </p>
+<p><img src="/2020/03/19/ceshi/1584639907800.png" alt="查看参考模板"></p>
+<p>5）在 udtf 目录下创建一个 FlatEventUDTF 类 </p>
+<p><img src="/2020/03/19/ceshi/1584640061023.png" alt="创建FlatEventUDTF类"></p>
+<p>6）编写代码 </p>
+<p>首先分析日志结构 </p>
+<p><img src="/2020/03/19/ceshi/1584640172393.png" alt="日志结构"></p>
+<p>1）在 pom.xml 中要加入 fastJson 依赖 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.28.odps<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（ 2）编写自定义 UDTF 代码 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.aliyun.odps.udf.ExecutionContext;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.odps.udf.UDFException;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.odps.udf.UDTF;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.odps.udf.annotation.Resolve;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.*;</span><br><span class="line"><span class="comment">// TODO define input and output types, e.g.</span></span><br><span class="line"><span class="string">"string,string-&gt;string,bigint"</span>.</span><br><span class="line"><span class="meta">@Resolve</span>(&#123;<span class="string">"string-&gt;bigint,string,string"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlatEventUDTF</span> <span class="keyword">extends</span> <span class="title">UDTF</span> </span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">(ExecutionContext ctx)</span> <span class="keyword">throws</span> UDFException</span></span><br><span class="line"><span class="function"></span>&#123; &#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(Object[] args)</span> <span class="keyword">throws</span> UDFException </span>&#123;</span><br><span class="line">String event =(String) args[<span class="number">0</span>];</span><br><span class="line">JSONArray jsonArray = JSON.parseArray(event);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; jsonArray.size(); i++) &#123;</span><br><span class="line">JSONObject jsonObject = jsonArray.getJSONObject(i);</span><br><span class="line">String ett =(String) jsonObject.getString(<span class="string">"ett"</span>);</span><br><span class="line">String eventName =(String) jsonObject.getString(<span class="string">"en"</span>);</span><br><span class="line">String eventJson =(String) jsonObject.getString(<span class="string">"kv"</span>);</span><br><span class="line">forward(Long.parseLong(ett),eventName,eventJson);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> UDFException </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中， @Resolve({“string-&gt;bigint,string,string”} 表示该函数，传入参数是 string，返回<br>参数是三个，分别为长整型，和两个字符串，对应的返回值就是事件的时间、事件名称和事<br>件内容（json 格式）。 </p>
+<p>7）打包部署 </p>
+<p>（1）提交到 Data Studio 开发环境 </p>
+<p><img src="/2020/03/19/ceshi/1584640681181.png" alt="提交到Data Studio 开发环境"></p>
+<p>（2）提交函数详情 </p>
+<p><img src="/2020/03/19/ceshi/1584640746505.png" alt="提交函数"></p>
+<p>（ 3）提交函数过程，控制台打印 </p>
+<p><img src="/2020/03/19/ceshi/1584640794096.png" alt="查看提交日志"></p>
+<p>提交成功后 ，回到 DataWorks 中的资源菜单中可以看到增加了 1 个 JAR 包，函数菜单<br>中可以看到定义的函数。 </p>
+<p><img src="/2020/03/19/ceshi/1584640850276.png" alt="查看提交后的jar包"></p>
+<p>8）测试函数<br>在 DataStudio 中临时查询，执行如下语句 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">FlatEventUDTF(GET_JSON_OBJECT(log_string,<span class="string">'$.et'</span>)) <span class="keyword">as</span></span><br><span class="line">(event_time, event_name, event_json)</span><br><span class="line"><span class="keyword">from</span> ods_base_log</span><br><span class="line"><span class="keyword">where</span> ds=<span class="string">'20191008'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>能看到如下结果表示运行正确 </p>
+<p><img src="/2020/03/19/ceshi/1584640962328.png" alt="查看udf函数运行结果"></p>
+<h3 id="DWD-层建表（启动日志表）"><a href="#DWD-层建表（启动日志表）" class="headerlink" title="DWD 层建表（启动日志表）"></a>DWD 层建表（启动日志表）</h3><p>在流程中建立表，在 DWD 文件夹中增加一个 dwd_start_log 的表，可以直接用 ddl 模式建立，再进行微调。 </p>
+<p>1） 在业务 1 的表上，右键新建表 </p>
+<p><img src="/2020/03/19/ceshi/1584641165935.png" alt="创建DWD层表"></p>
+<p>2）点击 DDL 模式 </p>
+<p><img src="/2020/03/19/ceshi/1584641222222.png" alt="DDL模式"></p>
+<p>3） 在 DDL 模式中添加建表语句 </p>
+<p><img src="/2020/03/19/ceshi/1584641312899.png" alt="DDL 模式中添加建表语句 "></p>
+<p>详细建表语句如下 </p>
 
         </div>
         <footer class="article-footer">
@@ -702,7 +1004,7 @@
 
 
 
-    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7yeube7000170v5enkuh0h0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7z2lg890001w4v5bajq62za" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -772,20 +1074,20 @@
             "@type": "Person",
             "name": "易向东"
         },
-        "headline": "阿里云dataworks+maxcompute方案设计",
+        "headline": "阿里云Dataworks+maxcompute实时计算数据仓库方案设计",
         "image": "https://yixiangdong.github.io/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png",
         "keywords": "",
         "genre": "",
         "datePublished": "2020-03-19",
         "dateCreated": "2020-03-19",
-        "dateModified": "2020-03-19",
+        "dateModified": "2020-03-20",
         "url": "https://yixiangdong.github.io/2020/03/19/ceshi/",
         "description": "数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
 项目需求分析
 采集埋点日志数据 
 采集业务数据库中数据 
 数据仓库的搭建（用户",
-        "wordCount": 7672
+        "wordCount": 8946
     }
 </script>
 
@@ -883,7 +1185,7 @@
                             <a href="/2020/03/19/ceshi/" class="thumbnail">
     
     
-        <span style="background-image:url(/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png)" alt="阿里云dataworks+maxcompute方案设计" class="thumbnail-image"></span>
+        <span style="background-image:url(/2020/03/19/ceshi/%E9%98%BF%E9%87%8C%E4%BA%91%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6.png)" alt="阿里云Dataworks+maxcompute实时计算数据仓库方案设计" class="thumbnail-image"></span>
     
     
 </a>
@@ -892,7 +1194,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/03/19/ceshi/" class="title">阿里云dataworks+maxcompute方案设计</a></p>
+                            <p class="item-title"><a href="/2020/03/19/ceshi/" class="title">阿里云Dataworks+maxcompute实时计算数据仓库方案设计</a></p>
                             <p class="item-date"><time datetime="2020-03-19T03:12:23.000Z" itemprop="datePublished">2020-03-19</time></p>
                         </div>
                     </li>
