@@ -12,18 +12,20 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="# 数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等">
+    <meta name="description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云dataworks+maxcompute方案设计">
 <meta property="og:url" content="https://yixiangdong.github.io/2020/03/19/ceshi/index.html">
 <meta property="og:site_name" content="大数据商务智能(BI)方案设计">
-<meta property="og:description" content="# 数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等">
+<meta property="og:description" content="数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等 项目需求分析 采集埋点日志数据  采集业务数据库中数据  数据仓库的搭建（用户">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/architecher.png">
 <meta property="article:published_time" content="2020-03-19T03:12:23.000Z">
-<meta property="article:modified_time" content="2020-03-19T03:26:01.788Z">
+<meta property="article:modified_time" content="2020-03-19T05:06:52.561Z">
 <meta property="article:author" content="易向东">
 <meta property="article:tag" content="大数据商务智能">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yixiangdong.github.io/2020/03/19/ceshi/architecher.png">
     
 
     
@@ -192,7 +194,15 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="# 数据仓库概念"></a># 数据仓库概念</h2><h3 id="数据仓库定义-Data-Warehouse"><a href="#数据仓库定义-Data-Warehouse" class="headerlink" title="数据仓库定义(Data Warehouse)"></a>数据仓库定义(Data Warehouse)</h3><p>是为企业所有决策制定过程，提供所有系统数据支持的战略集合。<br>数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。<br>数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。<br>数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等</p>
+            <h2 id="数据仓库概念"><a href="#数据仓库概念" class="headerlink" title="数据仓库概念"></a>数据仓库概念</h2><h3 id="数据仓库定义-Data-Warehouse"><a href="#数据仓库定义-Data-Warehouse" class="headerlink" title="数据仓库定义(Data Warehouse)"></a>数据仓库定义(Data Warehouse)</h3><p>是为企业所有决策制定过程，提供所有系统数据支持的战略集合。<br>数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。<br>数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。<br>数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等</p>
+<h2 id="项目需求分析"><a href="#项目需求分析" class="headerlink" title="项目需求分析"></a>项目需求分析</h2><ol>
+<li>采集埋点日志数据 </li>
+<li>采集业务数据库中数据 </li>
+<li>数据仓库的搭建（用户行为数仓、业务数仓） </li>
+<li>分析统计业务指标 </li>
+<li>对结果进行可视化展示 </li>
+</ol>
+<h2 id="系统数据流程设计"><a href="#系统数据流程设计" class="headerlink" title="系统数据流程设计"></a>系统数据流程设计</h2><p><img src="/2020/03/19/ceshi/architecher.png" alt="架构图"></p>
 
         </div>
         <footer class="article-footer">
@@ -200,7 +210,7 @@
 
 
 
-    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7y70xb40000c0v525t38i5e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://yixiangdong.github.io/2020/03/19/ceshi/" data-id="ck7yaoggn00017kv58s3ve5h6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -271,16 +281,19 @@
             "name": "易向东"
         },
         "headline": "阿里云dataworks+maxcompute方案设计",
-        "image": "https://yixiangdong.github.io",
+        "image": "https://yixiangdong.github.io/2020/03/19/ceshi/architecher.png",
         "keywords": "",
         "genre": "",
         "datePublished": "2020-03-19",
         "dateCreated": "2020-03-19",
         "dateModified": "2020-03-19",
         "url": "https://yixiangdong.github.io/2020/03/19/ceshi/",
-        "description": "# 数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
-",
-        "wordCount": 18
+        "description": "数据仓库概念数据仓库定义(Data Warehouse)是为企业所有决策制定过程，提供所有系统数据支持的战略集合。数据仓库好处：可以帮助企业， 改进业务流程、 控制成本、 提高产品质量等。数据仓库做什么： 清洗，转义，分类，重组，合并，拆分，统计等。数据仓库输出到哪： 报表系统、用户画像、推荐系统、机器学习、风控系统等
+项目需求分析
+采集埋点日志数据 
+采集业务数据库中数据 
+数据仓库的搭建（用户",
+        "wordCount": 31
     }
 </script>
 
@@ -378,7 +391,7 @@
                             <a href="/2020/03/19/ceshi/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2020/03/19/ceshi/architecher.png)" alt="阿里云dataworks+maxcompute方案设计" class="thumbnail-image"></span>
     
     
 </a>
