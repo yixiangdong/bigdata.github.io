@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
         item: data => {
           let link = data.permalink ? data.permalink : CONFIG.root + data.path;
           return `<a href="${link}" class="algolia-hit-item-link">${data._highlightResult.title.value}</a>`;
+          //return (`${data._highlightResult.title.value} ${data._highlightResult.contentStripTruncate.value}`);
         },
         empty: data => {
           return `<div id="algolia-hits-empty">
