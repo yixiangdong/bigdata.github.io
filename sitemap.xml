@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://etop.work/tags/index.html</loc>
+    
+    <lastmod>2020-04-02T09:59:01.372Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/categories/index.html</loc>
+    
+    <lastmod>2020-04-02T09:58:32.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/about/index.html</loc>
+    
+    <lastmod>2020-04-02T09:57:39.881Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/sparkstreaming4/</loc>
+    
+    <lastmod>2020-04-02T04:39:40.512Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://etop.work/sparkstreaming3/</loc>
     
-    <lastmod>2020-04-01T20:21:33.165Z</lastmod>
+    <lastmod>2020-04-02T04:38:39.985Z</lastmod>
     
   </url>
   
@@ -12,13 +40,6 @@
     <loc>https://etop.work/sparkstreaming2/</loc>
     
     <lastmod>2020-04-01T18:57:21.417Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://etop.work/sparkstreaming4/</loc>
-    
-    <lastmod>2020-04-01T18:36:10.798Z</lastmod>
     
   </url>
   
@@ -61,13 +82,6 @@
     <loc>https://etop.work/ceshi25/</loc>
     
     <lastmod>2020-03-31T05:08:08.678Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://etop.work/ceshi30/</loc>
-    
-    <lastmod>2020-03-31T05:03:16.349Z</lastmod>
     
   </url>
   
