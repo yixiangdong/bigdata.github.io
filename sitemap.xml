@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://etop.work/jvm2/</loc>
+    
+    <lastmod>2020-04-02T15:21:18.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/jvm1/</loc>
+    
+    <lastmod>2020-04-02T13:55:33.311Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/sparkstreaming4/</loc>
+    
+    <lastmod>2020-04-02T11:11:39.041Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://etop.work/about/index.html</loc>
     
-    <lastmod>2020-04-02T10:14:16.594Z</lastmod>
+    <lastmod>2020-04-02T10:23:41.331Z</lastmod>
     
   </url>
   
@@ -19,13 +40,6 @@
     <loc>https://etop.work/categories/index.html</loc>
     
     <lastmod>2020-04-02T09:58:32.095Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://etop.work/sparkstreaming4/</loc>
-    
-    <lastmod>2020-04-02T04:39:40.512Z</lastmod>
     
   </url>
   
