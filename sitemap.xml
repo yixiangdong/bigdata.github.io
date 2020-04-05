@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://etop.work/clickhouse1/</loc>
+    
+    <lastmod>2020-04-05T16:41:37.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/clickhouse4/</loc>
+    
+    <lastmod>2020-04-05T13:01:29.458Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/clickhouse3/</loc>
+    
+    <lastmod>2020-04-05T13:01:20.646Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://etop.work/clickhouse2/</loc>
+    
+    <lastmod>2020-04-05T13:01:12.800Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://etop.work/clickhouse/</loc>
     
-    <lastmod>2020-04-05T12:54:15.011Z</lastmod>
+    <lastmod>2020-04-05T12:59:29.636Z</lastmod>
     
   </url>
   
